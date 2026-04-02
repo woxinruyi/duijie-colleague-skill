@@ -104,7 +104,7 @@ allowed-tools: Read, Write, Edit, Bash
 python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py --setup
 ```
 
-配置完成后，只需输入姓名，自动完成所有采集：
+**群聊采集**（使用 tenant_access_token，需 bot 在群内）：
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
   --name "{name}" \
@@ -113,19 +113,51 @@ python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
   --doc-limit 20
 ```
 
+**私聊采集**（需要 user_access_token + 私聊 chat_id）：
+
+私聊消息需要用户本人授权，步骤：
+1. 飞书应用需开通**用户权限**：`im:message`、`im:chat`
+2. 生成 OAuth 授权链接（替换 APP_ID）：
+   ```
+   https://open.feishu.cn/open-apis/authen/v1/authorize?app_id={APP_ID}&redirect_uri=http://www.example.com&scope=im:message%20im:chat
+   ```
+3. 用户在浏览器打开授权，从回调 URL 复制 code
+4. 换取 token：
+   ```bash
+   python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py --exchange-code {CODE}
+   ```
+5. 采集私聊（需提供私聊 chat_id，可在发送消息的 API 返回值中获取）：
+   ```bash
+   python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
+     --name "{name}" \
+     --p2p-chat-id oc_xxx \
+     --output-dir ./knowledge/{slug} \
+     --msg-limit 1000
+   ```
+6. 也可以直接指定 open_id 跳过用户搜索：
+   ```bash
+   python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
+     --open-id ou_xxx \
+     --p2p-chat-id oc_xxx \
+     --name "{name}"
+   ```
+
 自动采集内容：
-- 所有与他共同群聊中他发出的消息（过滤系统消息、表情包）
+- 群聊：所有与他共同群聊中他发出的消息（过滤系统消息、表情包）
+- 私聊：与他的私聊完整对话（含双方消息，用于理解对话语境）
 - 他创建/编辑的飞书文档和 Wiki
 - 相关多维表格（如有权限）
 
 采集完成后用 `Read` 读取输出目录下的文件：
-- `knowledge/{slug}/messages.txt` → 消息记录
+- `knowledge/{slug}/messages.txt` → 消息记录（群聊 + 私聊）
 - `knowledge/{slug}/docs.txt` → 文档内容
 - `knowledge/{slug}/collection_summary.json` → 采集摘要
 
-如果采集失败（权限不足 / bot 未加群），告知用户需要：
-1. 将飞书 App bot 添加到相关群聊
-2. 或改用方式 B/C
+如果采集失败，告知用户检查：
+- 群聊采集：bot 是否已添加到相关群聊
+- 私聊采集：是否已配置 user_access_token 和 p2p_chat_id
+- 权限：应用是否开通了 im:message 和 im:chat 用户权限
+- 或改用方式 B/C
 
 ---
 
@@ -521,7 +553,7 @@ First-time setup:
 python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py --setup
 ```
 
-After setup, just enter the name:
+**Group chat collection** (uses tenant_access_token, bot must be in the group):
 ```bash
 python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
   --name "{name}" \
@@ -530,19 +562,50 @@ python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
   --doc-limit 20
 ```
 
+**Private chat (P2P) collection** (requires user_access_token + p2p chat_id):
+
+Private messages require user authorization:
+1. Enable **user scopes** in Feishu app: `im:message`, `im:chat`
+2. Generate OAuth URL (replace APP_ID):
+   ```
+   https://open.feishu.cn/open-apis/authen/v1/authorize?app_id={APP_ID}&redirect_uri=http://www.example.com&scope=im:message%20im:chat
+   ```
+3. User opens URL in browser, authorizes, copies code from callback URL
+4. Exchange code for token:
+   ```bash
+   python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py --exchange-code {CODE}
+   ```
+5. Collect with p2p chat_id:
+   ```bash
+   python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
+     --name "{name}" \
+     --p2p-chat-id oc_xxx \
+     --output-dir ./knowledge/{slug}
+   ```
+6. Or skip user search by providing open_id directly:
+   ```bash
+   python3 ${CLAUDE_SKILL_DIR}/tools/feishu_auto_collector.py \
+     --open-id ou_xxx \
+     --p2p-chat-id oc_xxx \
+     --name "{name}"
+   ```
+
 Auto-collected content:
-- All messages sent by them in shared group chats (system messages and stickers filtered)
+- Group chats: messages sent by them (system messages and stickers filtered)
+- Private chats: full conversation with both parties (for context understanding)
 - Feishu docs and Wikis they created/edited
 - Related spreadsheets (if accessible)
 
 After collection, `Read` the output files:
-- `knowledge/{slug}/messages.txt` → messages
+- `knowledge/{slug}/messages.txt` → messages (group + private)
 - `knowledge/{slug}/docs.txt` → document content
 - `knowledge/{slug}/collection_summary.json` → collection summary
 
-If collection fails (insufficient permissions / bot not in chat), inform user to:
-1. Add the Feishu App bot to relevant group chats
-2. Or switch to Option B/C
+If collection fails, check:
+- Group chat: bot must be added to relevant group chats
+- Private chat: user_access_token and p2p_chat_id must be configured
+- Permissions: app must have im:message and im:chat user scopes enabled
+- Or switch to Option B/C
 
 ---
 
