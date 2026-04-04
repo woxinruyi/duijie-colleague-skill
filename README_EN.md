@@ -25,25 +25,9 @@ Provide source materials (Feishu messages, DingTalk docs, Slack messages, emails
 plus your subjective description of the person<br>
 and get an **AI Skill that actually works like them**
 
-[Supported Sources](#supported-data-sources) · [Install](#install) · [Usage](#usage) · [Demo](#demo) · [Detailed Install](INSTALL.md) · [**中文**](README.md)
+[Supported Sources](#supported-data-sources) · [Install](#install) · [Usage](#usage) · [Demo](#demo) · [Detailed Install](INSTALL.md) · [**中文**](README.md) · [**Español**](README_ES.md) · [**Deutsch**](README_DE.md) · [**日本語**](README_JA.md) · [**Русский**](README_RU.md) · [**Português**](README_PT.md)
 
 </div>
-
----
-
-### 🌟 Related Project: [ex.skill](https://github.com/titanwings/ex-skill)
-
-> Based on community feedback, we've updated **ex.skill** (a.k.a. 前任.skill)! Now supports:
->
-> - **WeChat chat history auto-import** (Windows / macOS, just keep WeChat desktop logged in, zero config)
-> - **iMessage auto-extraction** (macOS users)
-> - **Full astrology chart interpretation** (Sun/Moon/Rising/Venus/Mars/Mercury × 12 signs)
-> - **MBTI 16 types + cognitive functions**, Enneagram, attachment styles
-> - All gender identities and relationship types supported
->
-> Colleague left? Use **colleague.skill**. Ex left? Use **[ex.skill](https://github.com/titanwings/ex-skill)**. Cyber-immortality, end to end 🌟🌟🌟
->
-> If you find this interesting, give both projects a Star!
 
 ---
 
@@ -234,9 +218,9 @@ create-colleague/
 
 <a href="https://www.star-history.com/?repos=titanwings%2Fcolleague-skill&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=titanwings/colleague-skill&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=titanwings/colleague-skill&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=titanwings/colleague-skill&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=titanwings/colleague-skill&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=titanwings/colleague-skill&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=titanwings/colleague-skill&type=date&legend=top-left" />
  </picture>
 </a>
 

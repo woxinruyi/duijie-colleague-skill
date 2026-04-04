@@ -25,27 +25,13 @@
 生成一个**真正能替他工作的 AI Skill**<br>
 用他的技术规范写代码，用他的语气回答问题，知道他什么时候会甩锅
 
-[数据来源](#支持的数据来源) · [安装](#安装) · [使用](#使用) · [效果示例](#效果示例) · [详细安装说明](INSTALL.md) · [**English**](README_EN.md)
+[数据来源](#支持的数据来源) · [安装](#安装) · [使用](#使用) · [效果示例](#效果示例) · [详细安装说明](INSTALL.md) · [**English**](README_EN.md) · [**Español**](README_ES.md) · [**Deutsch**](README_DE.md) · [**日本語**](README_JA.md) · [**Русский**](README_RU.md) · [**Português**](README_PT.md)
 
 </div>
 
 ---
 
-### 🌟 同系列项目：[前任.skill](https://github.com/titanwings/ex-skill)
-
-> 根据大家的 issue 反馈，更新了一版 **前任.skill**！现已支持：
->
-> - **微信聊天记录全自动导入**（Windows / macOS，桌面端登录即可，无需任何配置）
-> - **iMessage 全自动提取**（macOS 用户）
-> - **完整星盘解读**（太阳/月亮/上升/金星/火星/水星 × 12 星座）
-> - **MBTI 16 型 + 认知功能**、九型人格、依恋风格全支持
-> - 支持所有性别认同与关系类型
->
-> 同事跑了用 **同事.skill**，前任跑了用 **[前任.skill](https://github.com/titanwings/ex-skill)**，赛博永生一条龙 🌟🌟🌟
->
-> 觉得有意思的话，给两个项目都点个 Star 吧！
-
----
+> **April 4th Update：** 新增了两个示例同事——一个做安全的工程师和一个有趣的 HR，在 `colleagues/` 目录下，欢迎体验！
 
 ## 支持的数据来源
 
@@ -232,9 +218,9 @@ create-colleague/
 
 <a href="https://www.star-history.com/?repos=titanwings%2Fcolleague-skill&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=titanwings/colleague-skill&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=titanwings/colleague-skill&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=titanwings/colleague-skill&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=titanwings/colleague-skill&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=titanwings/colleague-skill&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=titanwings/colleague-skill&type=date&legend=top-left" />
  </picture>
 </a>
 
